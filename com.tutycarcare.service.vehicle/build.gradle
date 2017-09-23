@@ -1,0 +1,114 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		maven {
+      		url "https://plugins.gradle.org/m2/"
+    		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    	 	classpath "mysql:mysql-connector-java:5.1.6"
+  	}
+}
+plugins {
+    id "org.flywaydb.flyway" version "4.1.2"
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+    maven { url "https://repo.spring.io/libs-release" }
+    mavenLocal()
+    mavenCentral()
+}
+
+flyway {
+	driver = System.getenv('driver')
+    url = System.getenv('url')
+    user = System.getenv('username')
+    password = System.getenv('password')
+    cleanDisabled = true
+    baselineOnMigrate = true
+    baselineVersion = 1
+    baselineDescription = "Plan DB schema and DML"
+    outOfOrder = true
+}
+
+dependencyManagement {
+	imports {
+		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR5'
+	}
+}
+
+mainClassName = "com.toothcloud.service.application.PlanMicroServiceApplication"
+
+
+dependencies {
+    // TestNG
+    testCompile 'org.testng:testng:6.8.1'
+    testCompile group: 'org.springframework', name: 'spring-test', version: '4.2.6.RELEASE'
+    test{
+    	useTestNG() {
+	        suites 'src/test/resources/testng.xml'
+	    }
+	    testLogging {
+				test.testLogging.showStandardStreams = true
+				exceptionFormat = 'full'
+		}
+	}
+    	 	
+	// JerseyTest
+    testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-jdk-http:2.22.2'
+	
+	// Jersey dependencies
+     compile 'javax.servlet:javax.servlet-api:3.1.0'  
+     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.2'
+     compile 'org.glassfish.jersey.core:jersey-client:2.22.2' 
+     compile 'org.glassfish.jersey.core:jersey-server:2.22.2' 
+     compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.2'
+     compile 'org.glassfish.jersey.media:jersey-media-moxy:2.22.2'
+	 compile 'org.glassfish.jersey.ext:jersey-bean-validation:2.22.2'
+     compile 'org.glassfish.jersey.media:jersey-media-multipart:2.22.2'
+	 compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.6.2'
+	 compile 'org.glassfish.jersey.ext:jersey-spring3:2.22.2'
+	 compile group: 'org.glassfish.jersey.ext', name: 'jersey-bean-validation', version: '2.23'
+   
+    //swagger dependencies
+    compile group: 'io.swagger', name: 'swagger-jersey2-jaxrs', version: '1.5.6'   
+    
+    //MyBatis
+    compile 'org.mybatis:mybatis:3.4.4' 
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1'
+    
+    //MySQL
+	compile 'mysql:mysql-connector-java:5.1.6'
+	
+   
+	
+    //Graph DB 
+    compile group: 'org.neo4j', name: 'neo4j-ogm-core', version: '2.0.2'
+    compile group: 'org.neo4j', name: 'neo4j-ogm-http-driver', version: '2.0.2'
+    compile group: 'org.neo4j', name: 'neo4j-rest-graphdb', version: '2.0.1'
+	
+	//AWS SDK
+  	compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-context', version: '1.2.1.RELEASE'
+  	
+	// Logger
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.5'
+  	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.5'
+  	
+  	//Spring Netflix Cloud Eureka and Feign Clinet
+  	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.cloud:spring-cloud-starter-feign')
+
+	compile group: 'com.netflix.feign', name: 'feign-jackson', version: '8.18.0'
+	compile group: 'com.netflix.feign', name: 'feign-jaxrs', version: '8.18.0'
+}
