@@ -2,20 +2,41 @@ package com.tutycarcare.service.beans;
 
 public class VehicleType {
 
-	String make;
+	int brandId;
+	String brand;
+	int modelId;
 	String model;
+	int typeId;
 	String type;
-	public String getMake() {
-		return make;
+	public int getBrandId() {
+		return brandId;
 	}
-	public void setMake(String make) {
-		this.make = make;
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	public int getModelId() {
+		return modelId;
+	}
+	public void setModelId(int modelId) {
+		this.modelId = modelId;
 	}
 	public String getModel() {
 		return model;
 	}
 	public void setModel(String model) {
 		this.model = model;
+	}
+	public int getTypeId() {
+		return typeId;
+	}
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
 	}
 	public String getType() {
 		return type;
@@ -25,7 +46,8 @@ public class VehicleType {
 	}
 	@Override
 	public String toString() {
-		return "VehicleType [make=" + make + ", model=" + model + ", type=" + type + "]";
+		return "VehicleType [brandId=" + brandId + ", brand=" + brand + ", modelId=" + modelId + ", model=" + model
+				+ ", typeId=" + typeId + ", type=" + type + "]";
 	}
 	
 }

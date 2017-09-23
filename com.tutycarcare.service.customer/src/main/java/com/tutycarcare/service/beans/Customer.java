@@ -7,8 +7,11 @@ public class Customer {
 	String firstname;
 	String middlename;
 	String lastname;
-	String address;
+	String address1;
+	String address2;
+	String city;
 	String mobile;
+	String alternateNumber;
 	String email;
 	Date dob;
 	Date dom;
@@ -42,12 +45,28 @@ public class Customer {
 		this.lastname = lastname;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAddress1() {
+		return address1;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getMobile() {
@@ -56,6 +75,14 @@ public class Customer {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+	
+	public String getAlternateNumber() {
+		return alternateNumber;
+	}
+
+	public void setAlternateNumber(String alternateNumber) {
+		this.alternateNumber = alternateNumber;
 	}
 
 	public String getEmail() {
@@ -109,10 +136,9 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [firstname=" + firstname + ", middlename=" + middlename + ", lastname=" + lastname
-				+ ", address=" + address + ", mobile=" + mobile + ", email=" + email + ", dob=" + dob + ", dom=" + dom
+				+ ", address1=" + address1 + ", address2=" + address2 + ", city=" + city + ", mobile=" + mobile
+				+ ", alternateNumber=" + alternateNumber + ", email=" + email + ", dob=" + dob + ", dom=" + dom
 				+ ", licenseNumber=" + licenseNumber + ", licenseExpiry=" + licenseExpiry + ", type=" + type + "]";
-	}
-	
-	
+	}	
 	
 }

@@ -2,11 +2,21 @@ package com.tutycarcare.service.beans;
 
 public class Vehicle {
 
+	int id;
 	VehicleType vehicleType;
 	Insurance insurance;
 	String registrationNumber;
 	String color;
 	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public VehicleType getVehicleType() {
 		return vehicleType;
 	}

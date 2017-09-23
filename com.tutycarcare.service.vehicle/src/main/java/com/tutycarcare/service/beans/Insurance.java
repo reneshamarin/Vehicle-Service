@@ -4,14 +4,23 @@ import java.sql.Date;
 
 public class Insurance {
 
-	String policyNo;
+	int id;
+	String policyNum;
 	String companyName;
 	Date expiryDate;
-	public String getPolicyNo() {
-		return policyNo;
+	
+	
+	public int getId() {
+		return id;
 	}
-	public void setPolicyNo(String policyNo) {
-		this.policyNo = policyNo;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getPolicyNum() {
+		return policyNum;
+	}
+	public void setPolicyNum(String policyNum) {
+		this.policyNum = policyNum;
 	}
 	public String getCompanyName() {
 		return companyName;
@@ -27,7 +36,8 @@ public class Insurance {
 	}
 	@Override
 	public String toString() {
-		return "Insurance [policyNo=" + policyNo + ", companyName=" + companyName + "]";
+		return "Insurance [id=" + id + ", policyNum=" + policyNum + ", companyName=" + companyName + ", expiryDate="
+				+ expiryDate + "]";
 	}
 	
 }
