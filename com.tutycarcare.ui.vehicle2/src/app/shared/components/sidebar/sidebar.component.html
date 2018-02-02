@@ -1,0 +1,82 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <ul class="list-group">
+        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
+        </a>
+        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'Charts' | translate }}
+        </a>
+        <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Tables' | translate }}
+        </a>
+        <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'Forms' | translate }}
+        </a>
+        <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'Boostrap Element' | translate }}
+        </a>
+        <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-wrench"></i>&nbsp;{{ 'Boostrap Grid' | translate }}
+        </a>
+        <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-th-list"></i>&nbsp;{{ 'Component' | translate }}
+        </a>
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages')">
+                <span><i class="fa fa-plus"></i>&nbsp; {{ 'Menu' | translate }}</span>
+            </a>
+        </div>
+        <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-file-o"></i>&nbsp;{{ 'Blank Page' | translate }}
+        </a>
+        <a class="list-group-item more-themes" href="http://www.strapui.com/" >
+            {{ 'More Theme' | translate }}
+        </a>
+         
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages1')">
+                <span><i class="fa"></i>&nbsp; {{ 'Job' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pages1'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/add-job-page']">
+                            <i class="fa fa-plus"></i>&nbsp;{{ 'Create Job' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/job-page']">
+                            <i class="fa fa-file-o"></i>&nbsp;{{ 'View Jobs' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/report-page']">
+                            <i class="fa fa-file-o"></i>&nbsp;{{ 'View Reports' | translate }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('pages2')">
+                <span><i class="fa"></i>&nbsp; {{ 'Vehicle' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pages2'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/add-vehicle-page']">
+                            <i class="fa fa-plus"></i>&nbsp;{{ 'Add Vehicle' | translate }}
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/vehicle-page']">
+                            <i class="fa fa-file-o"></i>&nbsp;{{ 'View Vehicles' | translate }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+    </ul>
+</nav>

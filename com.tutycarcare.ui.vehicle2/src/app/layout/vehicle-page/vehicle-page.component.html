@@ -1,0 +1,32 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Vehicles'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header">Table head options</div>
+                <div class="card-block table-responsive">
+                    <table class="table">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>Registration Number</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let vehicle of vehicleList">
+                            <th scope="row">{{vehicle.id}}</th>
+                            <td>{{vehicle.registrationNumber}}</td>
+                            <td>{{vehicle.vehicleType.brand}}</td>
+                            <td>{{vehicle.vehicleType.model}}</td>
+                            <td>{{vehicle.vehicleType.type}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

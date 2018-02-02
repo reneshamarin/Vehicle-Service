@@ -13,9 +13,7 @@ buildscript {
     	 	classpath "mysql:mysql-connector-java:5.1.6"
   	}
 }
-plugins {
-    id "org.flywaydb.flyway" version "4.1.2"
-}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -29,25 +27,13 @@ repositories {
     mavenCentral()
 }
 
-flyway {
-	driver = System.getenv('driver')
-    url = System.getenv('url')
-    user = System.getenv('username')
-    password = System.getenv('password')
-    cleanDisabled = true
-    baselineOnMigrate = true
-    baselineVersion = 1
-    baselineDescription = "Plan DB schema and DML"
-    outOfOrder = true
-}
-
 dependencyManagement {
 	imports {
 		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR5'
 	}
 }
 
-mainClassName = "com.toothcloud.service.application.PlanMicroServiceApplication"
+mainClassName = "com.tutycarcare.service.application.VehicleMicroServiceApplication"
 
 
 dependencies {
@@ -87,19 +73,12 @@ dependencies {
     compile 'org.mybatis:mybatis:3.4.4' 
     compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1'
     
+    //Flyway
+    compile "org.flywaydb:flyway-core:4.2.0"
+    
     //MySQL
 	compile 'mysql:mysql-connector-java:5.1.6'
 	
-   
-	
-    //Graph DB 
-    compile group: 'org.neo4j', name: 'neo4j-ogm-core', version: '2.0.2'
-    compile group: 'org.neo4j', name: 'neo4j-ogm-http-driver', version: '2.0.2'
-    compile group: 'org.neo4j', name: 'neo4j-rest-graphdb', version: '2.0.1'
-	
-	//AWS SDK
-  	compile group: 'org.springframework.cloud', name: 'spring-cloud-aws-context', version: '1.2.1.RELEASE'
-  	
 	// Logger
 	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.5'
   	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.5'

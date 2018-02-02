@@ -11,10 +11,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema customer
 -- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema customer
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `customer` ;
 
 USE `customer` ;
 
@@ -40,6 +36,18 @@ CREATE TABLE IF NOT EXISTS `customer`.`customer` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `customer`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `customer`.`users` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(100) NULL,
+  `lastname` VARCHAR(100) NULL,
+  `email` VARCHAR(60) NULL,
+  `password` VARCHAR(60) NULL,
+  `type` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

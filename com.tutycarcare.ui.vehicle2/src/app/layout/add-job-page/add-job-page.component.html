@@ -1,0 +1,118 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Create Job'" [icon]="'fa-edit'"></app-page-header>
+
+    <!-- <form role="form"> -->
+    <div class="row">
+        <div class="col-lg-6">
+
+                
+                <fieldset class="form-group">
+                    <label>Vehicle Registration Number</label>
+                    <input class="form-control" placeholder="Enter registration number">
+                </fieldset>
+
+        </div>
+
+        <div class="col-lg-6">
+                
+            <fieldset class="form-group">
+                <label>In Time</label>
+                <div class="input-group">
+                    <input class="form-control" [(ngModel)]="job.inTime" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-secondary" (click)="onTogglePicker1()">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+                <datetime-popup [value]="myDate1" (valueChange)="onValueChange1($event)"
+                [(showPopup)]="showPicker1"
+                [showDate]="showDate"
+                [showTime]="showTime"
+                [closeButton]="closeButton"></datetime-popup>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label>Estimated Delivery Time</label>
+                <div class="input-group">
+                    <input class="form-control" [(ngModel)]="job.estimatedDelivery" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-secondary" (click)="onTogglePicker2()">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+                <datetime-popup [value]="myDate2" (valueChange)="onValueChange2($event)"
+                [(showPopup)]="showPicker2"
+                [showDate]="showDate"
+                [showTime]="showTime"
+                [closeButton]="closeButton"></datetime-popup>
+            </fieldset>
+
+        </div>
+
+
+        <div class="col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Services
+                </div>
+                <div class="card-block table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Description</th>
+                            <th>Estimated Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let jobLineItem of jobLineItems">
+                            <td>
+                                <select class="form-control" [(ngModel)]="jobLineItem.serviceId" (change)="setJobLineItem(jobLineItem, $event)" [ngModelOptions]="{standalone: true}">
+                                    <option selected> Select Service</option>
+                                    <option *ngFor="let service of servicesList" [value]="service.id">{{service.name}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input class="form-control" [(ngModel)]="jobLineItem.description"  placeholder="Enter service description" [ngModelOptions]="{standalone: true}">
+                            </td>
+                            <td>
+                                <input class="form-control" [(ngModel)]="jobLineItem.estimatedCost" placeholder="Estimated cost" [ngModelOptions]="{standalone: true}">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <span (click)="addNewJobLineItem()">ADD</span>
+            </div>
+        </div>
+
+        <!-- <div class="form-group col-xl-4 col-sm-4 col-lg-4">
+            <label>Service</label>
+            <select class="form-control" [(ngModel)]="jobLineItem.serviceId" (change)="setCost(100)" [ngModelOptions]="{standalone: true}">
+                <option selected> Select Service</option>
+                <option *ngFor="let service of servicesList">{{service.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group col-xl-4 col-sm-4 col-lg-4">
+            <label>Service Description</label>
+            <input class="form-control" [(ngModel)]="jobLineItem.description"  placeholder="Enter service description" [ngModelOptions]="{standalone: true}">
+        </div>
+
+
+        <div class="form-group col-xl-4 col-sm-4 col-lg-4">
+            <label>Estimated Cost</label>
+            <input class="form-control" [(ngModel)]="jobLineItem.estimatedCost" placeholder="Estimated cost" [ngModelOptions]="{standalone: true}">
+        </div> -->
+
+        <div class="col-lg-12">
+            <button type="submit" class="btn btn-secondary" (click)="createJob()">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+    </div>
+
+    </div>
+    <!-- </form> -->
+    <!-- /.row -->
+</div>

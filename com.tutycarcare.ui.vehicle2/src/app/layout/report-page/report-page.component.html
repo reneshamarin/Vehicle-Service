@@ -1,0 +1,75 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Reports'" [icon]="'fa-table'"></app-page-header>
+    
+    <div class="row">
+        <div class="col-lg-6">
+                
+            <fieldset class="form-group">
+                <label>In Time</label>
+                <div class="input-group">
+                    <input class="form-control" [(ngModel)]="myDate1" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-secondary" (click)="onTogglePicker1()">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+                <datetime-popup [value]="myDate1" (valueChange)="onValueChange1($event)"
+                [(showPopup)]="showPicker1"
+                [showDate]="showDate"
+                [showTime]="showTime"
+                [closeButton]="closeButton"></datetime-popup>
+            </fieldset>
+        </div>
+        <div class="col-lg-6">
+            <fieldset class="form-group">
+                <label>Out Time</label>
+                <div class="input-group">
+                    <input class="form-control" [(ngModel)]="myDate2" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-secondary" (click)="onTogglePicker2()">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+                <datetime-popup [value]="myDate2" (valueChange)="onValueChange2($event)"
+                [(showPopup)]="showPicker2"
+                [showDate]="showDate"
+                [showTime]="showTime"
+                [closeButton]="closeButton"></datetime-popup>
+            </fieldset>
+
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header">Table head options</div>
+                <div class="card-block table-responsive">
+                    <table class="table">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>Reg #</th>
+                            <th>Estimated Cost</th>
+                            <th>In Time</th>
+                            <th>Estimated Delivery Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- <tr *ngFor="let job of jobsList">
+                            <th scope="row">{{job.id}}</th>
+                            <td>{{job.vehicle.registrationNumber}}</td>
+                            <td>{{job.estimatedCost}}</td>
+                            <td>{{job.inTime}}</td>
+                            <td>{{job.outTime}}</td>
+                        </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

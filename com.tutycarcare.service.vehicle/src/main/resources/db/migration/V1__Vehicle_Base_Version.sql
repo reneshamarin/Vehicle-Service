@@ -11,10 +11,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- Schema vehicle
 -- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema vehicle
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `vehicle` DEFAULT CHARACTER SET utf8 ;
 
 USE `vehicle` ;
 
@@ -102,6 +98,47 @@ CREATE TABLE IF NOT EXISTS `vehicle`.`type` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `vehicle`.`service`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `vehicle`.`service` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `description` VARCHAR(200) NULL,
+  `cost` DOUBLE NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `vehicle`.`job`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `vehicle`.`job` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `vehicle_id` INT UNSIGNED NULL,
+  `in_time` TIMESTAMP NULL,
+  `estimated_delivery` TIMESTAMP NULL,
+  `out_time` TIMESTAMP NULL,
+  `estimated_cost` DOUBLE NULL,
+  `total_cost` DOUBLE NULL,
+  `status` VARCHAR(45) NULL,
+  `service_advisor_id` INT UNSIGNED NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `vehicle`.`job_line_items`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `vehicle`.`job_line_items` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `job_id` INT UNSIGNED NOT NULL,
+  `service_id` INT UNSIGNED NULL,
+  `description` VARCHAR(200) NULL,
+  `estimated_cost` DOUBLE NULL,
+  `actual_cost` DOUBLE NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

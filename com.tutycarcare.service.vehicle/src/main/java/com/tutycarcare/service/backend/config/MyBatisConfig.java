@@ -47,8 +47,8 @@ public class MyBatisConfig {
 		properties.setProperty(MyBatisConstants.URL, environment.getProperty(MyBatisConstants.DB_URL));
 		properties.setProperty(MyBatisConstants.USERNAME, environment.getProperty(MyBatisConstants.DB_USERNAME));
 		properties.setProperty(MyBatisConstants.PASSWORD, environment.getProperty(MyBatisConstants.DB_PASSWORD));
-		properties.setProperty(MyBatisConstants.POOL_PING_ENABLED, environment.getProperty(MyBatisConstants.POOL_PING_ENABLED));
-		properties.setProperty(MyBatisConstants.POOL_PING_QUERY, environment.getProperty(MyBatisConstants.POOL_PING_QUERY));
+		properties.setProperty(MyBatisConstants.POOL_PING_ENABLED, "true");
+		properties.setProperty(MyBatisConstants.POOL_PING_QUERY, "SELECT 1");
 		factory.setProperties(properties);
 		return factory.getDataSource();
 	}

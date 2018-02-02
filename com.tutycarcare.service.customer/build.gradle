@@ -13,9 +13,7 @@ buildscript {
     	 	classpath "mysql:mysql-connector-java:5.1.6"
   	}
 }
-plugins {
-    id "org.flywaydb.flyway" version "4.1.2"
-}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -29,17 +27,6 @@ repositories {
     mavenCentral()
 }
 
-flyway {
-	driver = System.getenv('driver')
-    url = System.getenv('url')
-    user = System.getenv('username')
-    password = System.getenv('password')
-    cleanDisabled = true
-    baselineOnMigrate = true
-    baselineVersion = 1
-    baselineDescription = "Plan DB schema and DML"
-    outOfOrder = true
-}
 
 dependencyManagement {
 	imports {
@@ -47,7 +34,8 @@ dependencyManagement {
 	}
 }
 
-mainClassName = "com.toothcloud.service.application.PlanMicroServiceApplication"
+
+mainClassName = "com.tutycarcare.service.application.CustomerMicroServiceApplication"
 
 
 dependencies {
@@ -82,6 +70,9 @@ dependencies {
    
     //swagger dependencies
     compile group: 'io.swagger', name: 'swagger-jersey2-jaxrs', version: '1.5.6'   
+    
+    //Flyway
+    compile "org.flywaydb:flyway-core:4.2.0"
     
     //MyBatis
     compile 'org.mybatis:mybatis:3.4.4' 

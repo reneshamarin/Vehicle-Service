@@ -1,0 +1,34 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Jobs'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header">Table head options</div>
+                <div class="card-block table-responsive">
+                    <table class="table">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>Reg #</th>
+                            <th>Est Cost</th>
+                            <th>In Time</th>
+                            <th>Est Delivery Time</th>
+                            <th>Out Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let job of jobsList">
+                            <th scope="row">{{job.id}}</th>
+                            <td>{{job.vehicle.registrationNumber}}</td>
+                            <td>{{job.estimatedCost}}</td>
+                            <td>{{job.inTime}}</td>
+                            <td>{{job.outTime}}</td>
+                            <td>{{job.outTime}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

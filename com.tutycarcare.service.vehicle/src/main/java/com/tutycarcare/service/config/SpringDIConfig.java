@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages={
-	"com.tutycare.service"
+	"com.tutycarcare.service"
 })
 public class SpringDIConfig {
 
